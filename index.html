@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BankApp</title>
-</head>
-<body>
-  <script>
-    
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BankApp</title>
+  </head>
+  <body>
+    <script>
+      //variables
+      const title = document.createElement("div");
+      const balance = document.createElement("div");
+      const form = document.createElement("form");
+      const input = document.createElement("input");
+      const button = document.createElement("button");
+
+      let currentBalance = 1000;
+
+      //elements
+      document.body.appendChild(title);
+      title.textContent = "Баланс";
+
+      document.body.appendChild(balance);
+      balance.textContent = "1000";
+
+      document.body.appendChild(form);
+
+      form.appendChild(input);
+
+      form.appendChild(button);
+      button.textContent = "Оплатить";
+
+      //styles
+      document.body.style.color = "#fff";
+      document.body.style.fontFamily = "sans-serif";
+      document.body.style.textTransform = "upperCase";
+      document.body.style.fontWeight = "bold";
+      document.body.style.background = "#181818";
+      title.style.display = "inline-block";
+      title.style.marginRight = "5px";
+      title.style.marginBottom = "5px";
+      balance.style.display = "inline-block";
+
+      //При нажатии кнопки срабатывает событие при котором
+      button.addEventListener("click", () => {
+        event.preventDefault();
+        const newBalance = (balance.textContent = currentBalance - input.value);
+        input.value = "";
+      });
+
+      /*
+      Дублирование значение текста в input в title
+      input.addEventListener(
+        "input",
+        () => (balance.textContent = input.value)
+      );
+      */
+    </script>
+  </body>
 </html>
