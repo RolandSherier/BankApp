@@ -33,7 +33,7 @@
       //styles
       document.body.style.color = "#fff";
       document.body.style.fontFamily = "sans-serif";
-      document.body.style.textTransform = "upperCase";
+      // document.body.style.textTransform = "upperCase";
       document.body.style.fontWeight = "bold";
       document.body.style.background = "#181818";
       title.style.display = "inline-block";
@@ -41,11 +41,26 @@
       title.style.marginBottom = "5px";
       balance.style.display = "inline-block";
 
-      //При нажатии кнопки срабатывает событие при котором
+      //При нажатии кнопки срабатывает событие при котором из текущего баланса вычитается = 1000 - сумма указанная в input
       button.addEventListener("click", () => {
         event.preventDefault();
-        const newBalance = (balance.textContent = currentBalance - input.value);
+        balance.textContent = currentBalance - input.value;
         input.value = "";
+      });
+
+      // flags
+      input.addEventListener("keydown", function () {
+        let isDigit = false;
+        let isDash = false;
+        let isControl = false;
+
+        if (event.key >= 0 || event.key <= 9) {
+          isDigit = true;
+        }
+
+        if (isDigit === false) {
+          event.preventDefault();
+        }
       });
 
       /*
